@@ -77,6 +77,7 @@ const Editor = () => {
                   lineHeight="24px"
                   color="#131316"
                   letterSpacing="-0.015em"
+                  textAlign="left"
                 >
                   Editor
                 </Heading>
@@ -140,6 +141,7 @@ const Editor = () => {
                       lineHeight="32px"
                       fontWeight="700"
                       letterSpacing="-0.015em"
+                      textAlign="left"
                     >
                       Blessing Daniels
                     </Heading>
@@ -169,7 +171,7 @@ const Editor = () => {
                     <Flex
                       width="100%"
                       ml="50px"
-                      display={{ base: "none", lg: "inline" }}
+                      display={{ base: "none", lg: "inline-flex" }}
                     >
                       <EditorButton marginTop="32px">Edit Profile</EditorButton>
                     </Flex>
