@@ -130,6 +130,7 @@ const Editor = () => {
                     <Avatar
                       src={AvatarImage}
                       boxSize={{ base: "74px", lg: "82px" }}
+                      alignSelf={{ lg: "self-start" }}
                     />
                     <Box display={{ lg: "none" }}>
                       <EditorButton>Edit Profile</EditorButton>
@@ -150,6 +151,7 @@ const Editor = () => {
                       lineHeight="22px"
                       mt={{ base: "12px", lg: "16px" }}
                       mb={{ base: "16px", lg: "14px" }}
+                      textAlign="left"
                     >
                       Personal Trainer 💪 Dancer 💃 Meditator. I love all
                       animals 🐶 and donate a percentage of my income to marine
