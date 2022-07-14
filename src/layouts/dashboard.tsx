@@ -45,7 +45,6 @@ const Sidebar = () => {
     fontSize: "12px",
     lineHeight: "16px",
     marginLeft: "60px",
-    // textTransform: "uppercase",
     letterSpacing: "0.04em",
     marginBottom: "20px",
     marginTop: "32px",
@@ -62,7 +61,7 @@ const Sidebar = () => {
             key={index}
           />
         ))}
-        <Text {...menuHeaderStyle} textTransform="uppercase">
+        <Text {...menuHeaderStyle} textTransform="uppercase" textAlign="left">
           Payments
         </Text>
         {menu2.map((menuItem, index) => (
@@ -73,7 +72,7 @@ const Sidebar = () => {
             key={index}
           />
         ))}
-        <Text {...menuHeaderStyle} textTransform="uppercase">
+        <Text {...menuHeaderStyle} textTransform="uppercase" textAlign="left">
           Business Tools
         </Text>
         {menu3.map((menuItem, index) => (
