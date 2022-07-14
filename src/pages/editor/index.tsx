@@ -185,7 +185,10 @@ const Editor = () => {
 
           {/* Links on the editor main page */}
           {totalLinkObjectArray && totalLinkObjectArray?.length > 0 && (
-            <Box px={{ base: "20px", lg: "60px" }}>
+            <Box
+              px={{ base: "20px", lg: "60px" }}
+              pt={{ base: "20px", lg: "unset" }}
+            >
               <Accordion
                 allowToggle
                 width="100%"
@@ -268,7 +271,8 @@ const Editor = () => {
           justify="flex-end"
           columnGap="12px"
           pr="20px"
-          pb="12px"
+          position="sticky"
+          bottom="72px"
         >
           {controls.map((control, index) => (
             <Flex
