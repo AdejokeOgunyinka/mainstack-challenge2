@@ -1,0 +1,19 @@
+.activeMenu {
+    border-left: 2px solid #FF5403;
+    fill: #FF5403;
+    stroke: #FF5403;
+    height: 28px;
+    
+    .activeNavText {
+        color: #FF5403 !important;    
+    }
+}
+
+.activeMobileMenu {
+    fill: #FF5403;
+    stroke: #FF5403;
+
+    .activeNavText {
+        color: #FF5403 !important;    
+    }
+}

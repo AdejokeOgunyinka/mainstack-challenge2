@@ -1,0 +1,17 @@
+.drawer_component {
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+        .arrow {
+            display: inline-flex !important;
+        }
+    }
+
+}
+
+.arrow {
+    color: #4D5760;
+    display: none !important;
+}
