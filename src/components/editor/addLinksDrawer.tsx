@@ -38,11 +38,11 @@ const AddLinksDrawer = ({
       .required(),
   });
 
-  const { saveLinkObjectArray } = useContext(LinkDrawerContext);
+  const { saveLinkObjectArray, saveMoreLinks } = useContext(LinkDrawerContext);
 
   const onSubmit = (values: { links: any }) => {
-    console.log({ values });
     saveLinkObjectArray(values.links);
+    saveMoreLinks([values.links]);
     onClose();
   };
 

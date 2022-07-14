@@ -43,7 +43,7 @@ const Editor = () => {
     }
   };
 
-  const { linkObjectArray } = useContext(LinkDrawerContext);
+  const { totalLinkObjectArray } = useContext(LinkDrawerContext);
 
   return (
     <Flex width="100%" height="100%" boxSizing="border-box">
@@ -184,7 +184,7 @@ const Editor = () => {
           </Box>
 
           {/* Links on the editor main page */}
-          {linkObjectArray && linkObjectArray?.length > 0 && (
+          {totalLinkObjectArray && totalLinkObjectArray?.length > 0 && (
             <Box px={{ base: "20px", lg: "60px" }}>
               <Accordion
                 allowToggle
@@ -192,41 +192,43 @@ const Editor = () => {
                 mb={{ base: "80px", md: "unset" }}
                 mt="16px"
               >
-                <AccordionItem {...sectionStyles}>
-                  <AccordionButton
-                    width="100%"
-                    padding="unset !important"
-                    _hover={{ outline: "none !important" }}
-                  >
-                    <Flex justify="space-between" width="100%">
-                      <Flex>
-                        <Image
-                          alt="drag indicator"
-                          src={DragIndicator}
-                          mr="8px"
-                        />
-                        <Text {...sectionHeaderStyles}>Links</Text>
-                      </Flex>
-                      <AccordionIcon />
-                    </Flex>
-                  </AccordionButton>
-                  <AccordionPanel px="unset !important" pt="32px !important">
-                    {linkObjectArray?.map(
-                      (
-                        link: { title: string; link: string },
-                        index: number
-                      ) => (
-                        <Box width="100%" mb="20px">
-                          <LinkExternalButton
-                            text={link.title}
-                            link={link.link}
-                            key={index}
+                {totalLinkObjectArray.map((linkObject) => (
+                  <AccordionItem {...sectionStyles}>
+                    <AccordionButton
+                      width="100%"
+                      padding="unset !important"
+                      _hover={{ outline: "none !important" }}
+                    >
+                      <Flex justify="space-between" width="100%">
+                        <Flex>
+                          <Image
+                            alt="drag indicator"
+                            src={DragIndicator}
+                            mr="8px"
                           />
-                        </Box>
-                      )
-                    )}
-                  </AccordionPanel>
-                </AccordionItem>
+                          <Text {...sectionHeaderStyles}>Links</Text>
+                        </Flex>
+                        <AccordionIcon />
+                      </Flex>
+                    </AccordionButton>
+                    <AccordionPanel px="unset !important" pt="32px !important">
+                      {linkObject?.map(
+                        (
+                          link: { title: string; link: string },
+                          index: number
+                        ) => (
+                          <Box width="100%" mb="20px">
+                            <LinkExternalButton
+                              text={link.title}
+                              link={link.link}
+                              key={index}
+                            />
+                          </Box>
+                        )
+                      )}
+                    </AccordionPanel>
+                  </AccordionItem>
+                ))}
               </Accordion>
             </Box>
           )}

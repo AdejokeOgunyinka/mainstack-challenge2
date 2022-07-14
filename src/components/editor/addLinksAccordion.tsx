@@ -56,7 +56,7 @@ const AddLinksAccordion = ({
               <Image alt="drag indicator" src={DragIndicator} mr="8px" />
               <Text {...sectionHeaderStyles}>{header}</Text>
             </Flex>
-            {values.links.length > 0 && removeLink && (
+            {values.links.length > 1 && removeLink && (
               <Image
                 alt="remove link"
                 src={TrashIcon}

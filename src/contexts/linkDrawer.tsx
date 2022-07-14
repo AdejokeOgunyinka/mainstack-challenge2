@@ -8,11 +8,15 @@ export type LinkDrawerContextType = {
 export interface LinkDrawerContextInterface {
   linkObjectArray: LinkDrawerContextType[];
   saveLinkObjectArray: (val: LinkDrawerContextType[]) => void;
+  totalLinkObjectArray: Array<any>;
+  saveMoreLinks: (val: Array<any>) => void;
 }
 
 const LinkDrawerContext = React.createContext<LinkDrawerContextInterface>({
   linkObjectArray: [],
   saveLinkObjectArray: () => {},
+  totalLinkObjectArray: [],
+  saveMoreLinks: () => {},
 });
 
 const LinkDrawerProvider = ({ children }: { children: React.ReactNode }) => {
@@ -24,11 +28,20 @@ const LinkDrawerProvider = ({ children }: { children: React.ReactNode }) => {
     setLinkObjectArray([...linkObjectArray, ...val]);
   };
 
+  const [totalLinkObjectArray, setTotalLinkObjectArray] = useState<Array<any>>(
+    []
+  );
+  const saveMoreLinks = (val: Array<any>) => {
+    setTotalLinkObjectArray([...totalLinkObjectArray, ...val]);
+  };
+
   return (
     <LinkDrawerContext.Provider
       value={{
         linkObjectArray,
         saveLinkObjectArray,
+        totalLinkObjectArray,
+        saveMoreLinks,
       }}
     >
       {children}
