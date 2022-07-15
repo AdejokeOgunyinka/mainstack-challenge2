@@ -28,6 +28,7 @@ const EditorInfoSection = () => {
       right="0"
       top="0"
       height="100vh"
+      maxWidth="550px !important"
     >
       <Box
         bg="#131316"
@@ -38,12 +39,18 @@ const EditorInfoSection = () => {
         borderRadius="24px"
       >
         <VStack textAlign="center" overflowY="scroll" height="100%">
-          <Flex direction="column" alignItems="center" position="relative">
+          <Flex
+            direction="column"
+            alignItems="center"
+            position="relative"
+            width="100%"
+          >
             <Image
               alt="hot air balloon"
               src={HotAirBalloon}
               height="119px"
               borderRadius="20px 20px 0px 0px"
+              width="100%"
             />
             <Avatar
               boxSize="74px"

@@ -36,7 +36,6 @@ const AddElementDrawer = ({
 
   const handleOpenAddLinksDrawer = (index: number) => {
     if (index === 0) {
-      onClose();
       onOpenAddLinksDrawer();
     }
   };
