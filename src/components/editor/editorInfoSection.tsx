@@ -14,9 +14,20 @@ import SocialMedia from "./socialMedia";
 import EditorButton from "./button";
 import { LinkDrawerContext } from "../../contexts/linkDrawer";
 import LinkExternalButton from "./linkExternalButton";
+import { useAppSelector } from "hooks";
+import { LinkEditorData, LinkData } from "store/slices/types";
 
 const EditorInfoSection = () => {
-  const { linkObjectArray } = useContext(LinkDrawerContext);
+  const {
+    editor: { blockElements },
+  } = useAppSelector((state) => state);
+
+  let links: LinkData[] = [];
+  const blockData = blockElements as LinkEditorData[];
+
+  blockData?.map((elem) => {
+    return links.push(...elem.value);
+  });
 
   return (
     <Flex
@@ -71,20 +82,15 @@ const EditorInfoSection = () => {
             <SocialMedia />
           </Box>
           <VStack width="100%" spacing="16px" px="20px">
-            {linkObjectArray &&
-              linkObjectArray?.length > 0 &&
-              linkObjectArray?.map(
-                (
-                  linkObject: { link: string; title: string },
-                  index: number
-                ) => (
-                  <LinkExternalButton
-                    text={linkObject.title}
-                    link={linkObject.link}
-                    key={index}
-                  />
-                )
-              )}
+            {links &&
+              links?.length > 0 &&
+              links?.map((linkObject: LinkData, index: number) => (
+                <LinkExternalButton
+                  text={linkObject.title}
+                  link={linkObject.link}
+                  key={index}
+                />
+              ))}
           </VStack>
         </VStack>
       </Box>

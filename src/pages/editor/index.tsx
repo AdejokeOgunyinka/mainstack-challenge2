@@ -209,11 +209,10 @@ const Editor = () => {
         <Flex // desktop controls
           align="center"
           justify="center"
-          pb="48px"
           display={{ base: "none", lg: "inline-flex" }}
           width="100%"
           position="sticky"
-          bottom="48px"
+          bottom="30px"
         >
           <Flex {...controlStyles}>
             {controls.map((control, index) => (
