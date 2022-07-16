@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
 import { LinkDrawerProvider } from "./contexts/linkDrawer";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,9 +15,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ChakraProvider>
-      <LinkDrawerProvider>
-        <App />
-      </LinkDrawerProvider>
+      <Provider store={store}>
+        <LinkDrawerProvider>
+          <App />
+        </LinkDrawerProvider>
+      </Provider>
     </ChakraProvider>
   </React.StrictMode>
 );

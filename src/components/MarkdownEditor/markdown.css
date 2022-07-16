@@ -1,0 +1,21 @@
+.container .mde-header .mde-tabs button {
+    padding: 5px;
+    font-size: 13px;
+}
+
+.container .react-mde {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.container .mde-header .mde-tabs button svg {
+    font-size: 13px !important;
+}
+
+.container {
+    background-color: white;
+}
+
+.container .mde-header {
+    background-color: white;
+}

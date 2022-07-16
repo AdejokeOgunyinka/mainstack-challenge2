@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
+// import { useContext } from "react";
 import {
   Box,
   Flex,
@@ -10,11 +11,11 @@ import {
   Tag,
   HStack,
   useDisclosure,
-  Accordion,
-  AccordionPanel,
-  AccordionItem,
-  AccordionButton,
-  AccordionIcon,
+  // Accordion,
+  // AccordionPanel,
+  // AccordionItem,
+  // AccordionButton,
+  // AccordionIcon,
 } from "@chakra-ui/react";
 import EditorInfoSection from "../../components/editor/editorInfoSection";
 import AvatarImage from "../../assets/avatar.png";
@@ -25,15 +26,24 @@ import { tags, controlStyles, controls } from "../../utils/editor";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/routeUtils";
 import "./styles.scss";
-import AddElementDrawer from "../../components/editor/addElementDrawer";
-import { LinkDrawerContext } from "../../contexts/linkDrawer";
-import DragIndicator from "../../assets/drag_indicator_6_dots.svg";
-import { sectionStyles, sectionHeaderStyles } from "../../utils/editor";
-import LinkExternalButton from "../../components/editor/linkExternalButton";
+// import AddElementDrawer from "../../components/editor/addElementDrawer";
+// import { LinkDrawerContext } from "../../contexts/linkDrawer";
+// import DragIndicator from "../../assets/drag_indicator_6_dots.svg";
+// import { sectionStyles, sectionHeaderStyles } from "../../utils/editor";
+// import LinkExternalButton from "../../components/editor/linkExternalButton";
+import DrawerModal from "components/Modal";
+import { useAppSelector } from "hooks";
+import { EditorContainer, EditorHeaderAction } from "views/editor/components";
+import { EditorItemsViewer } from "views/editor/components/EditorItemsContainer";
 
 const Editor = () => {
   const history = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const {
+    // user: { userDetails },
+    editor: { currentEditorBlockElement },
+  } = useAppSelector((state) => state);
 
   const handleControlClick = (index: number) => {
     if (index === 1) {
@@ -43,11 +53,22 @@ const Editor = () => {
     }
   };
 
-  const { totalLinkObjectArray } = useContext(LinkDrawerContext);
+  // const { totalLinkObjectArray } = useContext(LinkDrawerContext);
 
   return (
     <Flex width="100%" height="100%" boxSizing="border-box">
-      <AddElementDrawer onClose={onClose} isOpen={isOpen} />
+      {/* <AddElementDrawer onClose={onClose} isOpen={isOpen} /> */}
+      <DrawerModal
+        headingText="Select block element"
+        size="md"
+        isOpen={isOpen}
+        onClose={onClose}
+        {...(currentEditorBlockElement && {
+          headerAction: <EditorHeaderAction />,
+        })}
+      >
+        <EditorContainer onClose={onClose} />
+      </DrawerModal>
       <Flex
         width={{ base: "100%", lg: "60%" }}
         boxSizing="border-box"
@@ -86,7 +107,13 @@ const Editor = () => {
                 </Text>
               </Box>
             </Flex>
-            <Button bg="#FF5403" borderRadius="100px" color="#fff" disabled>
+            <Button
+              px="20px"
+              py="10px"
+              bg="#FF5403"
+              borderRadius="100px"
+              color="#fff"
+            >
               Publish
             </Button>
           </Flex>
@@ -184,12 +211,14 @@ const Editor = () => {
           </Box>
 
           {/* Links on the editor main page */}
-          {totalLinkObjectArray && totalLinkObjectArray?.length > 0 && (
-            <Box
-              px={{ base: "20px", lg: "60px" }}
-              pt={{ base: "20px", lg: "unset" }}
-            >
-              <Accordion
+          {/* {totalLinkObjectArray && totalLinkObjectArray?.length > 0 && ( */}
+          <Box
+            px={{ base: "20px", lg: "60px" }}
+            pt={{ base: "20px", lg: "unset" }}
+            mt="16px"
+          >
+            <EditorItemsViewer />
+            {/* <Accordion
                 allowToggle
                 width="100%"
                 mb={{ base: "80px", md: "unset" }}
@@ -232,9 +261,9 @@ const Editor = () => {
                     </AccordionPanel>
                   </AccordionItem>
                 ))}
-              </Accordion>
-            </Box>
-          )}
+              </Accordion> */}
+          </Box>
+          {/* )} */}
         </Box>
         <Flex // desktop controls
           align="center"

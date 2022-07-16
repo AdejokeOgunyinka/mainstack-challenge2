@@ -15,13 +15,16 @@ const EditorButton = ({
     <Button
       bg="inherit !important"
       border="1px solid #E5E8F0"
-      borderRadius="100px"
+      borderRadius="full"
       color="#131316"
       fontWeight="600"
       fontSize="15px"
       mt={marginTop}
       _hover={{ bg: "#E5E8F0 !important" }}
       onClick={onClick}
+      variant="outline"
+      p="3"
+      display="flex"
     >
       {children}
     </Button>
