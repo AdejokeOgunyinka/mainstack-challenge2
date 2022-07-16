@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   Flex,
   Box,
@@ -12,7 +12,7 @@ import HotAirBalloon from "../../assets/Hot_air_balloon.png";
 import AvatarImage from "../../assets/avatar.png";
 import SocialMedia from "./socialMedia";
 import EditorButton from "./button";
-import { LinkDrawerContext } from "../../contexts/linkDrawer";
+// import { LinkDrawerContext } from "../../contexts/linkDrawer";
 import LinkExternalButton from "./linkExternalButton";
 import { useAppSelector } from "hooks";
 import { LinkEditorData, LinkData } from "store/slices/types";
