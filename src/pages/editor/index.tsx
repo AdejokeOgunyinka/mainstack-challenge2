@@ -1,5 +1,4 @@
 import React from "react";
-// import { useContext } from "react";
 import {
   Box,
   Flex,
@@ -11,11 +10,6 @@ import {
   Tag,
   HStack,
   useDisclosure,
-  // Accordion,
-  // AccordionPanel,
-  // AccordionItem,
-  // AccordionButton,
-  // AccordionIcon,
 } from "@chakra-ui/react";
 import EditorInfoSection from "../../components/editor/editorInfoSection";
 import AvatarImage from "../../assets/avatar.png";
@@ -26,11 +20,6 @@ import { tags, controlStyles, controls } from "../../utils/editor";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/routeUtils";
 import "./styles.scss";
-// import AddElementDrawer from "../../components/editor/addElementDrawer";
-// import { LinkDrawerContext } from "../../contexts/linkDrawer";
-// import DragIndicator from "../../assets/drag_indicator_6_dots.svg";
-// import { sectionStyles, sectionHeaderStyles } from "../../utils/editor";
-// import LinkExternalButton from "../../components/editor/linkExternalButton";
 import DrawerModal from "components/Modal";
 import { useAppSelector } from "hooks";
 import { EditorContainer, EditorHeaderAction } from "views/editor/components";
@@ -53,11 +42,8 @@ const Editor = () => {
     }
   };
 
-  // const { totalLinkObjectArray } = useContext(LinkDrawerContext);
-
   return (
     <Flex width="100%" height="100%" boxSizing="border-box">
-      {/* <AddElementDrawer onClose={onClose} isOpen={isOpen} /> */}
       <DrawerModal
         headingText="Select block element"
         size="md"
@@ -87,7 +73,8 @@ const Editor = () => {
             position="sticky"
             zIndex={1}
             top="0px"
-            bg="#fff"
+            // bg="#fff"
+            backdropFilter={"blur(32px)"}
           >
             <Flex align="center">
               <Avatar src={AvatarImage} boxSize="32px" />
@@ -211,59 +198,13 @@ const Editor = () => {
           </Box>
 
           {/* Links on the editor main page */}
-          {/* {totalLinkObjectArray && totalLinkObjectArray?.length > 0 && ( */}
           <Box
             px={{ base: "20px", lg: "60px" }}
             pt={{ base: "20px", lg: "unset" }}
             mt="16px"
           >
             <EditorItemsViewer />
-            {/* <Accordion
-                allowToggle
-                width="100%"
-                mb={{ base: "80px", md: "unset" }}
-                mt="16px"
-              >
-                {totalLinkObjectArray.map((linkObject) => (
-                  <AccordionItem {...sectionStyles}>
-                    <AccordionButton
-                      width="100%"
-                      padding="unset !important"
-                      _hover={{ outline: "none !important" }}
-                    >
-                      <Flex justify="space-between" width="100%">
-                        <Flex>
-                          <Image
-                            alt="drag indicator"
-                            src={DragIndicator}
-                            mr="8px"
-                          />
-                          <Text {...sectionHeaderStyles}>Links</Text>
-                        </Flex>
-                        <AccordionIcon />
-                      </Flex>
-                    </AccordionButton>
-                    <AccordionPanel px="unset !important" pt="32px !important">
-                      {linkObject?.map(
-                        (
-                          link: { title: string; link: string },
-                          index: number
-                        ) => (
-                          <Box width="100%" mb="20px">
-                            <LinkExternalButton
-                              text={link.title}
-                              link={link.link}
-                              key={index}
-                            />
-                          </Box>
-                        )
-                      )}
-                    </AccordionPanel>
-                  </AccordionItem>
-                ))}
-              </Accordion> */}
           </Box>
-          {/* )} */}
         </Box>
         <Flex // desktop controls
           align="center"
